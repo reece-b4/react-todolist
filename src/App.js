@@ -1,19 +1,27 @@
-import "./App.css";
+import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [toDo, setList] = useState('make to do list');
   return (
-    <div className="App">
-      <header>header</header>
-        <form> 
-          <label></label>
-          <input></input>
-        add input
-        <list> 
-          list 
-          <li>list item</li>
-          <li>list item</li>
-        </list>
-        </form>
+    <div className='App'>
+      <header>To do list</header>
+      <div>
+        <input></input>
+        <button
+          onClick={() =>
+            setList((currList) => {
+              console.log(currList);
+              return 'buy milk';
+            })
+          }
+        >
+          Add to todo list
+        </button>
+      </div>
+      <ul>
+        <li>{toDo}</li>
+      </ul>
     </div>
   );
 }
