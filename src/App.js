@@ -1,18 +1,21 @@
 import './App.css';
 import { useState } from 'react';
+import Header from './components/Header'
 
 function App() {
   const [toDo, setList] = useState('make to do list');
+  const [input, setInput] = useState('');
+  console.log(input)
   return (
     <div className='App'>
-      <header>To do list</header>
+      <Header />
       <div>
-        <input></input>
+        <input placeholder="to do" value={input} onInput={e => setInput(e.target.value)}></input>
         <button
-          onClick={() =>
+          onClick={(input) =>
             setList((currList) => {
-              console.log(currList);
-              return 'buy milk';
+              // console.log(currList);
+              return [currList, input];
             })
           }
         >
