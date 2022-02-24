@@ -1,30 +1,34 @@
 import './App.css';
 import { useState } from 'react';
-import Header from './components/Header'
+import Header from './components/Header';
+import List from './components/List';
 
 function App() {
-  const [toDo, setList] = useState('make to do list');
-  const [input, setInput] = useState('');
-  console.log(input)
+  const [toDo, setList] = useState([
+    'make to do list',
+    'buy milk',
+    'post letter',
+    'learn react',
+  ]);
+  // const [input, setInput] = useState('');
+  console.log(toDo);
   return (
     <div className='App'>
       <Header />
       <div>
-        <input placeholder="to do" value={input} onInput={e => setInput(e.target.value)}></input>
+        <input placeholder='to do'></input>
         <button
-          onClick={(input) =>
-            setList((currList) => {
-              // console.log(currList);
-              return [currList, input];
-            })
-          }
+        // onClick={() =>
+        //   setList((currList) => {
+        //     // console.log(currList);
+        //     return [currList];
+        //   })
+        // }
         >
           Add to todo list
         </button>
       </div>
-      <ul>
-        <li>{toDo}</li>
-      </ul>
+      <List list={toDo} />
     </div>
   );
 }
