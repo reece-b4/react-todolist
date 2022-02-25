@@ -9,17 +9,34 @@ const List = () => {
     { item: 'post letter', complete: false },
     { item: 'learn react', complete: false },
   ]);
+
+const [completed, setCompleted] = useState([])
+
   return (
     <>
       <Form setToDos={setToDos} />
       <ul>
-        {toDos.map((item, index) => {
+          <p>ToDo</p>
+        {toDos.map((item) => {
           return (
             <ListItems
-              key={index}
+              key={item.item}
               item={item}
               toDos={toDos}
               setToDos={setToDos}
+              completed={completed}
+              setCompleted={setCompleted}
+            />
+          );
+        })}
+      </ul>
+      <ul>
+          <p>Completed</p>
+        {completed.map((completedItem) => {
+          return (
+            <ListItems
+              key={completed.item}
+              item={completed}
             />
           );
         })}

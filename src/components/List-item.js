@@ -1,18 +1,24 @@
-const ListItems = ({ item, toDos, setToDos }) => {
+const ListItems = ({ item, toDos, setToDos, completed, setCompleted }) => {
+  
   const updateComplete = (itemToUpdate) => {
-    const updatedItem = toDos.map((item) => {
+    let completedItem = {};
+    toDos.forEach((item) => {
       if (item.item === itemToUpdate) {
-        return { ...item, complete: !item.complete };
-      } else {
-        return item;
+        completedItem = item
+        const findIndex = toDos.findIndex(a=> a.id === completedItem.id)
+        findIndex != -1 && toDos.splice(findIndex, 1)
+        completed.push(completedItem)
       }
     });
-    setToDos(updatedItem);
+    console.log(completed, toDos)
+    setToDos(toDos);
+    setCompleted(completed);
   };
+
   return (
     <li>
       {item.item}
-      <input type='checkbox' onClick={() => updateComplete(item.item)} />
+      <input type="checkbox" onClick={() => updateComplete(item.item)} />
     </li>
   );
 };

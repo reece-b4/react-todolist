@@ -2,11 +2,12 @@ import { useState } from 'react';
 const Form = ({ setToDos }) => {
   const [newItem, setNewItem] = useState('');
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     setToDos((currToDos) => {
-      return [newItem, ...currToDos];
+      return [{item: newItem, complete: false}, ...currToDos];
     });
     setNewItem('');
   };
